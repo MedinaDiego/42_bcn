@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:09:15 by dimedina          #+#    #+#             */
-/*   Updated: 2023/05/30 14:28:01 by dimedina         ###   ########.fr       */
+/*   Created: 2023/06/09 10:59:03 by dimedina          #+#    #+#             */
+/*   Updated: 2023/06/09 11:03:24 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+unsigned int	ft_strlen(const char *str)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-	{
-		if (c >= 65 && c <= 90)
-		{
-			return (1);
-		}
-		else if (c >= 97 && c <= 122)
-		{
-			return (2);
-		}
-	}
-	return (0);
+	unsigned int	len;
+
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }

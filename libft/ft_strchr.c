@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:09:15 by dimedina          #+#    #+#             */
-/*   Updated: 2023/05/30 14:28:01 by dimedina         ###   ########.fr       */
+/*   Created: 2023/05/31 09:07:07 by dimedina          #+#    #+#             */
+/*   Updated: 2023/06/09 09:33:33 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+char	*ft_strchr(const char *str, int c)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	int	i;
+
+	i = 0;
+	while (str[i] != (char)c)
 	{
-		if (c >= 65 && c <= 90)
-		{
-			return (1);
-		}
-		else if (c >= 97 && c <= 122)
-		{
-			return (2);
-		}
+		if (str[i] == 0)
+			return (0);
+		i++;
 	}
-	return (0);
+	return ((char *)(str + i));
 }

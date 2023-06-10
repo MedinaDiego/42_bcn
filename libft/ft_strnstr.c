@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:09:15 by dimedina          #+#    #+#             */
-/*   Updated: 2023/05/30 14:28:01 by dimedina         ###   ########.fr       */
+/*   Created: 2023/06/10 11:50:46 by dimedina          #+#    #+#             */
+/*   Updated: 2023/06/10 12:11:15 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	unsigned int	i;
+	int				j;
+
+	i = 0;
+	if (needle[0] == 0)
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
 	{
-		if (c >= 65 && c <= 90)
+		j = 0;
+		while (needle[j] && needle[j] == haystack[i + j] && i + j < len)
 		{
-			return (1);
+			j++;
 		}
-		else if (c >= 97 && c <= 122)
+		if (needle[j] == 0)
 		{
-			return (2);
+			return ((char *)haystack + i);
 		}
+		i++;
 	}
-	return (0);
+	return (NULL);
 }

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:09:15 by dimedina          #+#    #+#             */
-/*   Updated: 2023/05/30 14:28:01 by dimedina         ###   ########.fr       */
+/*   Created: 2023/06/10 10:32:20 by dimedina          #+#    #+#             */
+/*   Updated: 2023/06/10 10:51:02 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+int	ft_strncmp(const char *str1, const char *str2, unsigned int n)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-	{
-		if (c >= 65 && c <= 90)
-		{
-			return (1);
-		}
-		else if (c >= 97 && c <= 122)
-		{
-			return (2);
-		}
-	}
-	return (0);
+	unsigned int	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (str1[i] && str2[i] && (i < n - 1) && str1[i] == str2[i])
+		i++;
+	return ((unsigned char) str1[i] - (unsigned char) str2[i]);
 }

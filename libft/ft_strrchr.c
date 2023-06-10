@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:09:15 by dimedina          #+#    #+#             */
-/*   Updated: 2023/05/30 14:28:01 by dimedina         ###   ########.fr       */
+/*   Created: 2023/06/09 10:55:46 by dimedina          #+#    #+#             */
+/*   Updated: 2023/06/09 11:20:13 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	int	len;
+
+	len = ft_strlen(str);
+	while (len >= 0)
 	{
-		if (c >= 65 && c <= 90)
-		{
-			return (1);
-		}
-		else if (c >= 97 && c <= 122)
-		{
-			return (2);
-		}
+		if (str[len] == (char)c)
+			return ((char *)(str + len));
+		len--;
 	}
-	return (0);
+	return (NULL);
 }

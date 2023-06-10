@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:09:15 by dimedina          #+#    #+#             */
-/*   Updated: 2023/05/30 14:28:01 by dimedina         ###   ########.fr       */
+/*   Created: 2023/05/18 16:29:56 by dimedina          #+#    #+#             */
+/*   Updated: 2023/05/18 16:59:07 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+void	ft_bzero(void*ptr, unsigned int num)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	unsigned char	*p;
+	unsigned int	i;	
+
+	p = (unsigned char *) ptr;
+	i = 0;
+	while (i < num)
 	{
-		if (c >= 65 && c <= 90)
-		{
-			return (1);
-		}
-		else if (c >= 97 && c <= 122)
-		{
-			return (2);
-		}
+		*p++ = 0;
+		i++;
 	}
-	return (0);
 }

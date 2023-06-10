@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:09:15 by dimedina          #+#    #+#             */
-/*   Updated: 2023/05/30 14:28:01 by dimedina         ###   ########.fr       */
+/*   Created: 2023/05/18 15:40:01 by dimedina          #+#    #+#             */
+/*   Updated: 2023/05/31 11:35:28 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+int	ft_atoi(const char *str)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	int	result;
+	int	sign;
+
+	sign = 1;
+	result = 0;
+	while (*str && (*str == ' ' || *str == '\t' || *str == '\n'
+			|| *str == '\r' || *str == '\f' || *str == '\v'))
+			++str;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		++str;
+	while (*str && *str >= '0' && *str <= '9')
 	{
-		if (c >= 65 && c <= 90)
-		{
-			return (1);
-		}
-		else if (c >= 97 && c <= 122)
-		{
-			return (2);
-		}
+		result = result * 10 + (*str - 48);
+		++str;
 	}
-	return (0);
+	return (result * sign);
 }

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:09:15 by dimedina          #+#    #+#             */
-/*   Updated: 2023/05/30 14:28:01 by dimedina         ###   ########.fr       */
+/*   Created: 2023/05/30 10:02:33 by dimedina          #+#    #+#             */
+/*   Updated: 2023/05/30 10:37:57 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include <stdlib.h>
+
+void	*ft_calloc(unsigned int num_elements, unsigned int element_size)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	unsigned int	total_size;
+	void			*ptr;
+	unsigned int	i;
+	unsigned char	*byte_ptr;
+
+	total_size = num_elements * element_size;
+	ptr = malloc(total_size);
+	if (ptr != NULL)
 	{
-		if (c >= 65 && c <= 90)
+		i = 0;
+		byte_ptr = (unsigned char *) ptr;
+		while (i < total_size)
 		{
-			return (1);
-		}
-		else if (c >= 97 && c <= 122)
-		{
-			return (2);
+			byte_ptr[i] = 0;
+			i++;
 		}
 	}
-	return (0);
+	return (ptr);
 }

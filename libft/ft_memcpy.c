@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:09:15 by dimedina          #+#    #+#             */
-/*   Updated: 2023/05/30 14:28:01 by dimedina         ###   ########.fr       */
+/*   Created: 2023/05/30 16:04:58 by dimedina          #+#    #+#             */
+/*   Updated: 2023/06/09 08:59:06 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+void	*ft_memcpy(void *dest, const void *src, unsigned int num)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	unsigned char		*d;
+	const unsigned char	*s;
+	unsigned int		i;
+
+	i = 0;
+	d = (unsigned char *) dest;
+	s = (const unsigned char *) src;
+	if (!dest && !src)
+		return (0);
+	while (i < num)
 	{
-		if (c >= 65 && c <= 90)
-		{
-			return (1);
-		}
-		else if (c >= 97 && c <= 122)
-		{
-			return (2);
-		}
+		d[i] = s[i];
+		i++;
 	}
-	return (0);
+	return (dest);
 }
