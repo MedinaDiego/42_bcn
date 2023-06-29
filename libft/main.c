@@ -33,6 +33,7 @@ int main()
 
     //ft_strlen: calcula la longitud de una cadena. 
 
+    //memset:
     char cadena[] = "   0patata";
     printf("La longitud de la cadena es de %d", ft_strlen(cadena));
 
