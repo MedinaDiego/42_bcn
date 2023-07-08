@@ -9,10 +9,11 @@
 /*   Updated: 2023/06/09 11:03:24 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-unsigned int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	unsigned int	len;
+	size_t	len;
 
 	len = 0;
 	while (str[len] != '\0')
