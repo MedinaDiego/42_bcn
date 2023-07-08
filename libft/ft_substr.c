@@ -6,7 +6,7 @@
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 11:18:45 by dimedina          #+#    #+#             */
-/*   Updated: 2023/07/08 13:50:22 by dimedina         ###   ########.fr       */
+/*   Updated: 2023/07/08 14:04:29 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ret;
+	char	*str_ptr;
 
 	if (!s)
 		return (NULL);
@@ -26,6 +27,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ret = malloc(sizeof(char) * (len + 1));
 	if (!ret)
 		return (NULL);
-	ft_strlcpy(ret, s + start, len + 1);
-	return (ret);
+	s += start;
+	str_ptr = ret;
+	*(ret + len) = '\0';
+	while (len-- && *s)
+		*ret++ = *s++;
+	return (str_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:02:32 by dimedina          #+#    #+#             */
-/*   Updated: 2023/07/08 12:25:40 by dimedina         ###   ########.fr       */
+/*   Updated: 2023/07/08 14:03:46 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		*ft_memcpy(void *dest, const void *src, unsigned int num);
 void		*ft_memmove(void *dest, const void *src, unsigned int num);
 void		*ft_memset(void *ptr, int value, unsigned int num);
 char		*ft_strchr(const char *str, int c);
-size_t			ft_strlen(const char *str);
+size_t		ft_strlen(const char *str);
 char		*ft_strrchr(const char *str, int c);
 char		*ft_strdup(const char *str);
 int			ft_tolower(int c);
