@@ -6,7 +6,7 @@
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:02:32 by dimedina          #+#    #+#             */
-/*   Updated: 2023/07/08 14:03:46 by dimedina         ###   ########.fr       */
+/*   Updated: 2023/07/08 16:16:46 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,6 @@ size_t		ft_strlcpy(char *dest, const char *src, unsigned int size);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strjoin(char const *s1, char const *s2);
+void		ft_putchar_fd(char c, int fd);
 #endif
