@@ -6,84 +6,80 @@
 /*   By: dimedina <dimedina@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:44:04 by dimedina          #+#    #+#             */
-/*   Updated: 2023/07/11 21:57:55 by dimedina         ###   ########.fr       */
+/*   Updated: 2023/07/15 10:17:30 by dimedina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "libft.h"
-
-static int	count_words(const char *s, char c)
+static int	ft_count_word(char const *s, char c)
 {
-	int	word_count;
+	int	i;
+	int	word;
 
-	word_count = 0;
-	while (*s)
-	{
-		if (*s == c)
-			s++;
-		else
-		{
-			word_count++;
-			while (*s && *s != c)
-				s++;
-		}
-	}
-	return (word_count);
-}
-
-static char	*copy_word(char *dest, const char *src, int n)
-{
-	char		*dest_ptr;
-	const char	*src_ptr;
-
-	dest_ptr = dest;
-	src_ptr = src;
-	while (n--)
-		*dest_ptr++ = *src_ptr++;
-	*dest_ptr = '\0';
-	return (dest);
-}
-
-static void	split_string(char **array, const char *s, char c, int count)
-{
-	int			word;
-	int			len;
-	const char	*word_start;
-
+	i = 0;
 	word = 0;
-	while (word < count)
+	while (s && s[i])
 	{
-		while (*s && *s == c)
-			s++;
-		len = 0;
-		word_start = s;
-		while (*s && *s != c)
+		if (s[i] != c)
 		{
-			len++;
-			s++;
+			word++;
+			while (s[i] != c && s[i])
+				i++;
 		}
-		*(array + word) = (char *)malloc(sizeof(char) * (len + 1));
-		if (!*(array + word))
-			return ;
-		copy_word(*(array + word), word_start, len);
-		word++;
+		else
+			i++;
 	}
-	*(array + word) = NULL;
+	return (word);
 }
 
-char	**ft_split(const char *s, char c)
+static int	ft_size_word(char const *s, char c, int i)
 {
-	int		count;
-	char	**array;
+	int	size;
 
-	if (!s)
+	size = 0;
+	while (s[i] != c && s[i])
+	{
+		size++;
+		i++;
+	}
+	return (size);
+}
+
+static void	ft_free(char **strs, int j)
+{
+	while (j-- > 0)
+		free(strs[j]);
+	free(strs);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		i;
+	int		word;
+	char	**strs;
+	int		size;
+	int		j;
+
+	i = 0;
+	j = -1;
+	word = ft_count_word(s, c);
+	strs = (char **)malloc((word + 1) * sizeof(char *));
+	if (!strs)
 		return (NULL);
-	count = count_words(s, c);
-	array = (char **)malloc(sizeof(char *) * (count + 1));
-	if (!array)
-		return (NULL);
-	split_string(array, s, c, count);
-	return (array);
+	while (++j < word)
+	{
+		while (s[i] == c)
+			i++;
+		size = ft_size_word(s, c, i);
+		strs[j] = ft_substr(s, i, size);
+		if (!strs[j])
+		{
+			ft_free(strs, j);
+			return (NULL);
+		}
+		i += size;
+	}
+	strs[j] = 0;
+	return (strs);
 }
